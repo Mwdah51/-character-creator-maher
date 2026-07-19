@@ -330,13 +330,21 @@ function calculateIdentity() {
 
     // Incorporate influencing accessories
     let accessoryInfluence = '';
-    const activeInfluencing = CONFIG.accessories.filter(a => a.type === 'influencing' && accessories.includes(a.id));
+    const hasLaptop = accessories.includes('laptop');
+    const hasStethoscope = accessories.includes('stethoscope');
     
-    if (activeInfluencing.length > 0) {
-        const names = activeInfluencing.map(a => a.name).join(' و ');
+    if (hasLaptop && hasStethoscope) {
         accessoryInfluence = isFemale 
-            ? ` كما أنها تستعين بـ ${names} لتنجز أعمالها الرقمية والطبية بمهارة فائقة.` 
-            : ` كما أنه يستعين بـ ${names} لينجز أعماله الرقمية والطبية بمهارة فائقة.`;
+            ? ` كما أنها تستخدم الكمبيوتر المحمول والسماعة الطبية لتدمج بين التقنيات الحديثة والرعاية الطبية بمهارة فائقة.` 
+            : ` كما أنه يستخدم الكمبيوتر المحمول والسماعة الطبية ليدمج بين التقنيات الحديثة والرعاية الطبية بمهارة فائقة.`;
+    } else if (hasLaptop) {
+        accessoryInfluence = isFemale 
+            ? ` كما أنها تستعين بالكمبيوتر المحمول لتطوير البرمجيات وإنجاز مهامها التقنية بذكاء.` 
+            : ` كما أنه يستعين بالكمبيوتر المحمول لتطوير البرمجيات وإنجاز مهامه التقنية بذكاء.`;
+    } else if (hasStethoscope) {
+        accessoryInfluence = isFemale 
+            ? ` كما أنها تستخدم السماعة الطبية للاطمئنان على صحة الجميع وتقديم الرعاية اللطيفة.` 
+            : ` كما أنه يستخدم السماعة الطبية للاطمئنان على صحة الجميع وتقديم الرعاية اللطيفة.`;
     }
 
     // Final clean sentence blend
