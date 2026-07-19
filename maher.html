@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صانع شخصيات ماهر | مصمم الشخصيات التفاعلي</title>
+    <meta name="description" content="قم بتصميم شخصيتك الخاصة 'ماهر'، اختر ملابسه، شعره، وأدواته، ودع النظام يولد اسمه ووصف شخصيته بناءً على اختياراتك!">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1 class="logo-title">صانع شخصيات <span>ماهر</span></h1>
+            <p class="logo-subtitle">صمم شخصيتك بالكامل بأسلوب بكسل آرت واكتشف هويتها المميزة!</p>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="creator-grid">
+            <!-- Left Side: Preview Area -->
+            <section class="preview-card glass">
+                <div class="preview-container" id="characterPreview">
+                    <!-- Layered Images stacked directly on top of each other -->
+                    <div class="layer-wrapper" id="layerWrapper">
+                        <div class="layer" id="bgLayer" style="width: 100%; height: 100%; position: absolute; z-index: 5;"></div>
+                        <img class="layer" id="bodyLayer" alt="Body">
+                        <img class="layer" id="hairLayer" alt="Hair">
+                        <img class="layer" id="clothesLayer" alt="Clothes">
+                        <!-- Accessories will be rendered dynamically as multiple overlay images inside this container -->
+                        <div id="accessoriesContainer" class="layer-container" style="position: absolute; width: 100%; height: 100%; z-index: 14;"></div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="randomizeBtn">
+                        <span class="btn-icon">🎲</span> خيارات عشوائية
+                    </button>
+                    <button class="btn btn-primary" id="generateNameBtn">
+                        <span class="btn-icon">✨</span> اعتماد وتوليد الاسم
+                    </button>
+                </div>
+            </section>
+
+            <!-- Right Side: Customizer Panel -->
+            <section class="control-panel glass">
+                <!-- Tabs Nav -->
+                <nav class="tabs-nav">
+                    <button class="tab-btn active" data-tab="size">📏 الحجم</button>
+                    <button class="tab-btn" data-tab="hair">💇‍♂️ الشعر</button>
+                    <button class="tab-btn" data-tab="clothes">👔 الملابس</button>
+                    <button class="tab-btn" data-tab="accessory">💼 الإكسسوارات</button>
+                    <button class="tab-btn" data-tab="background">🎨 الخلفية</button>
+                </nav>
+
+                <!-- Tabs Content -->
+                <div class="tabs-content">
+                    <!-- Size Category -->
+                    <div class="tab-pane active" id="sizePane">
+                        <h3>اختر حجم ماهر الجسدي</h3>
+                        <div class="options-grid" id="sizeOptions"></div>
+                    </div>
+
+                    <!-- Hair Category -->
+                    <div class="tab-pane" id="hairPane">
+                        <h3>اختر تسريحة الشعر (تحدد الجنس والمظهر)</h3>
+                        <div class="options-grid" id="hairOptions"></div>
+                    </div>
+
+                    <!-- Clothes Category -->
+                    <div class="tab-pane" id="clothesPane">
+                        <h3>اختر الزي</h3>
+                        <div class="options-grid" id="clothesOptions"></div>
+                    </div>
+
+                    <!-- Accessory Category (Multiple Selection) -->
+                    <div class="tab-pane" id="accessoryPane">
+                        <h3>اختر الملحقات والإكسسوارات (يمكنك تحديد خيارات متعددة)</h3>
+                        <div class="options-grid" id="accessoryOptions"></div>
+                    </div>
+
+                    <!-- Background Category -->
+                    <div class="tab-pane" id="backgroundPane">
+                        <h3>اختر الخلفية</h3>
+                        <div class="options-grid" id="backgroundOptions"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Naming / Result Modal (Overlay) -->
+        <div class="modal-overlay" id="resultModal">
+            <div class="modal-card glass scale-in">
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+                <div class="modal-content">
+                    <div class="result-avatar-preview" id="modalPreview">
+                        <!-- Cloned layered images will go here -->
+                    </div>
+                    <div class="result-info">
+                        <span class="badge">تم تحديد الهوية!</span>
+                        <h2 class="maher-name" id="maherName">ماهر البطل</h2>
+                        <p class="maher-description" id="maherDesc">هنا يظهر الوصف التفصيلي للشخصية بناءً على التركيبة المختارة.</p>
+                        
+                        <div class="modal-actions">
+                            <button class="btn btn-primary" id="downloadImageBtn">
+                                📥 تحميل الصورة
+                            </button>
+                            <button class="btn btn-secondary" id="shareBtn">
+                                🔗 نسخ الرابط ومشاركة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Load Config First, then App logic -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
