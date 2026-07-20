@@ -11,21 +11,21 @@ const CONFIG = {
         },
         { 
             id: 'teenager', 
-            name: 'شاب (Youth)', // Renamed from "مراهق" to "شاب"
+            name: 'شاب (Youth)', 
             path: 'pitures/bodies/teenbody.png',
             hairOffset: { x: 0, y: 0 },
-            glassesOffset: { x: 0, y: -33 }
+            glassesOffset: { x: 0, y: 0 } // Reset to 0 since glasses are now size-specific
         },
         { 
             id: 'adult', 
             name: 'بالغ (Adult)', 
             path: 'pitures/bodies/adultbody.png',
             hairOffset: { x: 0, y: 0 },
-            glassesOffset: { x: 0, y: -66 }
+            glassesOffset: { x: 0, y: 0 } // Reset to 0 since glasses are now size-specific
         }
     ],
 
-    // Hairstyles (now mapped to size-specific folders)
+    // Hairstyles (mapped to size-specific folders)
     hair: [
         { 
             id: 'short_1', 
@@ -114,13 +114,49 @@ const CONFIG = {
         }
     ],
 
-    // Accessories
+    // Accessories (now mapped to size-specific folders for glasses and flower)
     accessories: [
-        { id: 'mug', name: 'كوب قهوة', type: 'decorative', paths: { child: 'pitures/accessories/Magh.png', teenager: 'pitures/accessories/Magh.png', adult: 'pitures/accessories/Magh.png' } },
-        { id: 'flower', name: 'وردة لطيفة', type: 'decorative', paths: { child: 'pitures/accessories/flower.png', teenager: 'pitures/accessories/flower.png', adult: 'pitures/accessories/flower.png' } },
-        { id: 'glasses', name: 'نظارة بكسل', type: 'decorative', isGlasses: true, paths: { child: 'pitures/accessories/glass.png', teenager: 'pitures/accessories/glass.png', adult: 'pitures/accessories/glass.png' } },
-        { id: 'laptop', name: 'كمبيوتر محمول', type: 'influencing', attribute: 'التقني', paths: { child: 'pitures/accessories/lap top.png', teenager: 'pitures/accessories/lap top.png', adult: 'pitures/accessories/lap top.png' } },
-        { id: 'stethoscope', name: 'سماعة طبيب', type: 'influencing', attribute: 'الطبي', paths: { child: 'pitures/accessories/stethoscope.png', teenager: 'pitures/accessories/stethoscope.png', adult: 'pitures/accessories/stethoscope.png' } }
+        { 
+            id: 'mug', 
+            name: 'كوب قهوة', 
+            type: 'decorative', 
+            paths: { child: 'pitures/accessories/Magh.png', teenager: 'pitures/accessories/Magh.png', adult: 'pitures/accessories/Magh.png' } 
+        },
+        { 
+            id: 'flower', 
+            name: 'وردة لطيفة', 
+            type: 'decorative', 
+            paths: { 
+                child: 'pitures/accessories/child flower.png', 
+                teenager: 'pitures/accessories/teen flower.png', 
+                adult: 'pitures/accessories/adult flower.png' 
+            } 
+        },
+        { 
+            id: 'glasses', 
+            name: 'نظارة بكسل', 
+            type: 'decorative', 
+            isGlasses: true, 
+            paths: { 
+                child: 'pitures/accessories/child glasses.png', 
+                teenager: 'pitures/accessories/teen glasses.png', 
+                adult: 'pitures/accessories/Adult glasses.png' 
+            } 
+        },
+        { 
+            id: 'laptop', 
+            name: 'كمبيوتر محمول', 
+            type: 'influencing', 
+            attribute: 'التقني', 
+            paths: { child: 'pitures/accessories/lap top.png', teenager: 'pitures/accessories/lap top.png', adult: 'pitures/accessories/lap top.png' } 
+        },
+        { 
+            id: 'stethoscope', 
+            name: 'سماعة طبيب', 
+            type: 'influencing', 
+            attribute: 'الطبي', 
+            paths: { child: 'pitures/accessories/stethoscope.png', teenager: 'pitures/accessories/stethoscope.png', adult: 'pitures/accessories/stethoscope.png' } 
+        }
     ],
 
     // Dynamic backgrounds behind the character
